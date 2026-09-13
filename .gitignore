@@ -1,0 +1,38 @@
+# ============ C / C++ 编译产物 ============
+*.exe
+*.o
+*.out
+*.obj
+
+# ============ Python 垃圾文件 ============
+# 1. 字节码缓存文件（每次运行Python自动生成）
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 2. 虚拟环境文件夹（里面全是从网上下的库，非常大，绝对不能传）
+venv/
+.venv/
+env/
+ENV/
+
+# 3. 打包和构建生成的文件
+build/
+dist/
+*.egg-info/
+*.egg
+
+# 4. 测试和覆盖率报告
+.pytest_cache/
+.coverage
+htmlcov/
+
+# 5. 编译器和编辑器自动生成的配置文件夹
+.idea/
+.vscode/
+*.swp
+
+# ============ 系统垃圾文件 ============
+.DS_Store
+Thumbs.db
+desktop.ini
