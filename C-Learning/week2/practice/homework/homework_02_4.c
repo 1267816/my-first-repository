@@ -12,3 +12,17 @@
 //输出对应的十进制数。
 //输入样例：18
 //输出样例：12
+
+//题目意思翻译一下，就是十进制转十六进制
+
+#include <stdio.h>
+int main()
+{
+	int a;
+	scanf("%d",&a);
+	int b = a % 16;
+	int c = a / 16;
+	int d = c * 10 + b;
+	printf("%d",d);
+	return 0;
+}
