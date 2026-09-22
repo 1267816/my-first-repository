@@ -19,7 +19,11 @@ int main()
 	
 	
 	//输出
-	printf("%f,%d\n",1.0*sum/n,n);
+	if ( n != 0 ) {
+		printf("%f,%d\n",1.0*sum/n,n);
+	} else {
+		printf("没有输入有效数字，无法计算平均值.\n");
+	}
 	
 	return 0;
 }
