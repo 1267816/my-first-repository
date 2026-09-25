@@ -26,7 +26,45 @@
 #include <stdio.h>
 int main()
 {
+	//初始化
+	int n=0;
 	
+	//输入
+	scanf("%d",&n);
 	
+	//处理并输出
+	int q=n;
+	int min=1;
+	while (q>1) {
+		min*=10;
+		q--;
+	}
+	int max=min*10;
+	int x=min;
+	int y=x;
+	int z=0;
+	int t=0;
+	int cnt=n;
+	int sum=0;
+	while (x<max) {
+		while (y>0) {
+			z=y%10;
+			t=z;
+			while (cnt>1) {
+			z*=t;
+			cnt--;
+			}
+			sum+=z;
+			y/=10;
+			cnt=n;
+		}
+		if (sum==x) {
+			printf("%d\n",x);
+		}
+		x++;
+		y=x;
+		sum=0;
+	}
+
 	return 0;
 }
