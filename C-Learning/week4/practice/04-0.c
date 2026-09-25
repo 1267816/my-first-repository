@@ -27,8 +27,36 @@
 
 int main()
 {
-	
-	
+	int n,a,b,c,sum;
+	scanf("%d",&n);
+	a=n;
+	b=n;
+	c=n;
+	sum=a*100+b*10+c;
+	while (a<n+4) {
+		if (a!=b) {
+			if (a!=c) {
+				if (b!=c) {
+					printf("%d ",sum); 
+				}
+			}
+		}
+		if (c<n+3) {
+			c++;
+			sum=a*100+b*10+c;
+		} else if (b<n+3) {
+			b++;
+			c=n;
+			sum=a*100+b*10+c;
+		} else {
+			a++;
+			b=n;
+			c=n;
+			sum=a*100+b*10+c;
+			printf("\n");
+		}
+	}
+			
 	return 0;
 }
 
