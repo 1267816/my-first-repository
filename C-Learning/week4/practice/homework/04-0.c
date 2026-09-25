@@ -27,17 +27,35 @@
 
 int main()
 {
-	int n,a,b,c,sum;
+	//初始化
+	
+	int n;//输入的A
+	int a;//百位
+	int b;//十位
+	int c;//个位
+	int sum;//组成的三位数
+	int count=1;//计数器
+	
+	//输入A
 	scanf("%d",&n);
+	
+	//初始化三位数
 	a=n;
-	b=n;
-	c=n;
+	b=n+1;
+	c=n+2;
 	sum=a*100+b*10+c;
+	
+	//遍历可能的三位数，在判断后输出
 	while (a<n+4) {
 		if (a!=b) {
 			if (a!=c) {
 				if (b!=c) {
-					printf("%d ",sum); 
+					if (count%6==0) {
+						printf("%d\n",sum); 
+					} else {
+						printf("%d ",sum);
+					}
+					count++;
 				}
 			}
 		}
@@ -53,7 +71,6 @@ int main()
 			b=n;
 			c=n;
 			sum=a*100+b*10+c;
-			printf("\n");
 		}
 	}
 			
