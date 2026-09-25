@@ -1,3 +1,4 @@
+//NOTE:“等号右边数字占4位、左对齐”的要求要用%-4d来满足。
 /*
 04-2. 打印九九口诀表
 
@@ -43,11 +44,11 @@ int main(){
 	//处理并输出
 	while (b<=n) {
 		if (a<b) {
-			printf("%d*%d=%d ",a,b,a*b);
+			printf("%d*%d=%-4d",a,b,a*b);
 			a++;
 		}
 		if (a==b) {
-			printf("%d*%d=%d\n",a,b,a*b);
+			printf("%d*%d=%-4d\n",a,b,a*b);
 			b++;
 			a=1;
 		}
