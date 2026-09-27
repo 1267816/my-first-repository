@@ -2,63 +2,89 @@
 
 计算机科学与技术专业大一学生的练习仓库，存放 C 语言课程练习、前端入门练习和 Markdown 笔记。
 
-最后更新：2026-09-26
+<!-- BEGIN AUTO-STATS:overview -->
+仓库统计（自动生成于 2026-09-27）：C 语言练习 44 个 `.c` 文件 · 课程课件 10 份 · 前端练习 19 个 HTML · Markdown 笔记 2 份。
+<!-- END AUTO-STATS:overview -->
 
 ## 目录
 
-| 目录 | 内容 | 当前规模 |
-| --- | --- | --- |
-| `C-Learning/` | 翁恺《C 语言程序设计》入门课的跟课代码与练习，按课程周次组织 | 44 个 `.c` 文件 |
-| `front-end-practice/` | 暑假跟视频做的前端练习（HTML / CSS / JavaScript） | 19 个 HTML、2 个 JS、1 个 CSS |
-| `Markdown-learning/` | Markdown 语法笔记与练习 | 2 份笔记、1 张配图 |
-| `ai-workspace/` | 与 AI 助手交接学习进度用的说明文档 | 1 个 `.md` |
+| 目录 | 内容 |
+| --- | --- |
+| `C-Learning/` | 翁恺《C 语言程序设计》入门课的课件、跟课代码、练习与笔记，按课程周次组织 |
+| `front-end-practice/` | 暑假跟视频做的前端练习（HTML / CSS / JavaScript） |
+| `Markdown-learning/` | Markdown 语法笔记与练习 |
+| `ai-workspace/` | AI 协作用的工作目录，以及维护本仓库文档的脚本 |
 
-## 学习进度
+下面按目录列出概况，各目录的详细说明见该目录下的 `README.md`。
 
-### C 语言（翁恺《C 语言程序设计》入门课）
+## C-Learning
 
-| 周次 | 主题 | 跟课代码 | 例题 | 作业 | 状态 |
-| --- | --- | --- | --- | --- | --- |
-| 第 1 周 | 程序设计与 C 语言 | 2 | — | — | 已完成 |
-| 第 2 周 | 计算 | 6 | 2 | 4 | 已完成 |
-| 第 3 周 | 判断 | 8 | 4 | 4 | 已完成 |
-| 第 4 周 | 循环 | 8 | 0 | 4 | 作业已完成，习题解析未做 |
-| 第 5 周 | 循环控制 | 1 | 0 | 0 | 进行中 |
+<!-- BEGIN AUTO-STATS:c-learning -->
+| 周次 | 主题 | `.c` 文件 | 课件 | 笔记 |
+| --- | --- | --- | --- | --- |
+| 第 1 周 | 程序设计与 C 语言 | 2 | 3 | — |
+| 第 2 周 | 计算 | 12 | 2 | — |
+| 第 3 周 | 判断 | 16 | 2 | — |
+| 第 4 周 | 循环 | 13 | 2 | — |
+| 第 5 周 | 循环控制 | 1 | 1 | 1 |
+| 第 6 周 | 数据类型 | — | — | — |
+| 第 7 周 | 函数 | — | — | — |
+| 第 8 周 | 数组 | — | — | — |
+| 第 9 周 | 指针 | — | — | — |
+| 第 10 周 | 字符串 | — | — | — |
+| 第 11 周 | 结构类型 | — | — | — |
+| 第 12 周 | 程序结构 | — | — | — |
+| 第 13 周 | 文件 | — | — | — |
+| 第 14 周 | 链表 | — | — | — |
+<!-- END AUTO-STATS:c-learning -->
 
-### 前端
+每周的目录结构一致，含义固定：
 
-`front-end-practice/` 是 19 个 HTML 练习文件，按学习顺序编号，内容覆盖 HTML 标签与表单、
-CSS 选择器与盒模型、浮动与定位、flex 布局、移动端 rem 适配，以及 JavaScript 基础语法、
-函数、事件和 DOM 操作。
-
-### Markdown
-
-`Markdown-learning/` 存放语法笔记与练习：`Markdown入门.md` 涵盖标题、引用、列表、表格、
-段落与字体、代码、超链接、图片八个部分，`photo_format.md` 是图片语法的单独练习。
-
-## 目录约定
-
-`C-Learning/` 按课程周次划分，每周的目录含义固定：
-
+- `weekN/docs/`：课程课件
 - `weekN/video/`：跟着视频敲的程序
-- `weekN/practice/answer/`：视频里的例题
-- `weekN/practice/homework/`：课后作业
-- `weekN/module/`、`weekN/note/`：自己整理的代码模块和笔记
+- `weekN/practice/answer/`：例题解答
+- `weekN/practice/homework/`：课后练习
+- `weekN/module/`：自己整理的可复用代码模块
+- `weekN/note/`：笔记
 
-练习文件名对应题目编号，例如 `04-2.c` 是第 4 周第 2 题。各子目录的内容说明见该目录下的
-`README.md`。
+练习文件名对应题目编号，例如 `04-2.c` 是第 4 周第 2 题。
+编译方式与命名约定见 [`C-Learning/README.md`](C-Learning/README.md)。
+
+## front-end-practice
+
+<!-- BEGIN AUTO-STATS:front-end -->
+当前共 19 个 HTML 练习文件。编号 1–18 按学习顺序排列（`1.常见文本标签.html` … `18.flex弹性布局.html`）。另有 `html文件结构.html`。
+配套文件：`css/` 下 1 个样式表，`js/` 下 2 个脚本。
+<!-- END AUTO-STATS:front-end -->
+
+用浏览器直接打开任意 `.html` 文件即可，不需要构建步骤；文件名开头的数字是学习顺序，
+点号后面的部分是这一节的主题。详细说明见
+[`front-end-practice/README.md`](front-end-practice/README.md)。
+
+## Markdown-learning
+
+<!-- BEGIN AUTO-STATS:markdown -->
+笔记文件：`Markdown入门.md`、`photo_format.md`。配图：`photo_format.png`。
+<!-- END AUTO-STATS:markdown -->
+
+`Markdown入门.md` 是语法笔记兼练习，`photo_format.md` 记录图片语法。详细说明见
+[`Markdown-learning/README.md`](Markdown-learning/README.md)。
 
 ## 环境与约定
 
-- C 语言：Dev-C++ 6.3（TDM-GCC 9.2）；源码以 UTF-8 保存，编译时加 `-fexec-charset=GBK`
+- C 语言：Dev-C++ 6.3（TDM-GCC 9.2）；源码以 UTF-8 保存，编译时加 `-fexec-charset=GBK`，
   以便 Windows 控制台正确显示中文
-- 编辑器：VS Code；版本管理：Git + GitHub Desktop
-- `.gitignore` 已排除 `.exe`、`.o` 等编译产物和导出的 PDF
+- 编辑器：VS Code（仓库自带 `my-first-repository.code-workspace`）；版本管理：Git + GitHub Desktop
+- `.gitignore` 排除 `.exe`、`.o`、`.obj`、`.out` 等编译产物；课程课件与笔记的 PDF 保留在仓库里
+- 空目录中的 `.gitkeep` 是占位文件，用来让 git 保留该目录
 
 ## 说明
 
-仓库中不包含编译产物，克隆后需要自行编译 `.c` 文件。
+- 仓库中不含编译产物，克隆后需要自行编译 `.c` 文件
+- 上面的统计区块由 [`ai-workspace/update_repo_stats.py`](ai-workspace/update_repo_stats.py)
+  自动生成，不需要手动维护；提交前勾子会自动更新它们
 
 ## 联系
 
 - GitHub：[@1267816](https://github.com/1267816)
+- Email: 2587872607@qq.com

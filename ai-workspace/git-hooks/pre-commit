@@ -1,0 +1,14 @@
+#!/bin/sh
+# 由 ai-workspace/update_repo_stats.py 生成
+# 提交前重新生成 README 里的统计区块，并把它们加入本次提交。
+root="$(git rev-parse --show-toplevel)" || exit 0
+if command -v python >/dev/null 2>&1; then
+  py=python
+elif command -v py >/dev/null 2>&1; then
+  py=py
+else
+  exit 0
+fi
+"$py" "$root/ai-workspace/update_repo_stats.py" >/dev/null 2>&1 || exit 0
+git -C "$root" add README.md C-Learning/README.md front-end-practice/README.md Markdown-learning/README.md 2>/dev/null
+exit 0
