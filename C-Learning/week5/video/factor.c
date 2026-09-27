@@ -7,8 +7,8 @@ int main()
 	scanf("%d",&n);
 	
 	int fact = 1;
-	int i = 1;
-	for ( i = 1 ; i <= n ; i = i + 1) {
+	//int i = 1;
+	for ( int i = 1 ; i <= n ; i = i + 1) {
 		fact = fact * i;
 	}
 	
