@@ -41,3 +41,6 @@
 | `js/myscript.js` | 脚本示例 |
 | `js/table.js` | 表格相关脚本 |
 | `logo.jpg` | 练习用图片 |
+
+## 鸣谢
+- B站罗大富Bigrich的3小时前端入门教程(HTML+CSS+JS)
