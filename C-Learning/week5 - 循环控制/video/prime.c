@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 int main(){
 	int x;
 	
@@ -13,7 +12,7 @@ int main(){
 			break;
 		}
 	}
-	if (isPrime==1) { //这里也能判断i是否等于x
+	if (isPrime==1) { //这里也能判断i是否等于x，但不好
 		printf("是素数\n");
 	} else {
 		printf("不是素数\n");		

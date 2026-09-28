@@ -36,3 +36,29 @@ int main(){
 - 可读性差
 - 过度依赖循环的具体写法，如果把循环写成只试除到x的平方根，就会出问题
 - 不符合“循环变量只在循环内使用”的习惯
+
+### 5.2.2
+对prime.c进行修改，得到能输出2-100内所有素数的代码：
+```c
+#include <stdio.h>
+int main(){
+	int x;
+	int i; // x是素数
+	for (x=2;x<100;x++) {
+		int isPrime=1;
+		for (i=2;i<x;i++) {
+			if (x%i==0) {
+				isPrime = 0;
+				break;
+			}
+		}
+		if (isPrime==1) {
+			printf("%d ",x);
+		}
+	}
+	printf("\n");
+	return 0;
+}
+```
+**易错点**
+`isPrime`必须放在第一个for循环里面，才能让每次判断x是否为素数时，`isPrime`始终被正确地初始化为1。
