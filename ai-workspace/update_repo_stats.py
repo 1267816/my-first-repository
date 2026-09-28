@@ -43,29 +43,28 @@ MARKER = re.compile(
 
 SKIP_DIRS = {".git", "node_modules", "__pycache__"}
 
-# 翁恺《C 语言程序设计》入门课的周次安排，按课程大纲填写；课程若有变动改这里即可。
-WEEK_TOPICS = {
-    1: "程序设计与 C 语言",
-    2: "计算",
-    3: "判断",
-    4: "循环",
-    5: "循环控制",
-    6: "数据类型",
-    7: "函数",
-    8: "数组",
-    9: "指针",
-    10: "字符串",
-    11: "结构类型",
-    12: "程序结构",
-    13: "文件",
-    14: "链表",
-}
-
-
 def count_files(directory: Path, pattern: str) -> int:
     if not directory.is_dir():
         return 0
     return sum(1 for _ in directory.rglob(pattern))
+
+
+def week_sort_key(path: Path) -> tuple[int, str]:
+    """按目录名里的 weekN 排序；认不出编号的排在最后。"""
+    matched = re.match(r"^week(\d+)", path.name)
+    return (int(matched.group(1)) if matched else 999, path.name)
+
+
+def c_learning_dirs() -> list[Path]:
+    """扫描 C-Learning 下的周目录，所以目录改名不用改脚本。"""
+    root = REPO / "C-Learning"
+    if not root.is_dir():
+        return []
+    return sorted((p for p in root.iterdir() if p.is_dir()), key=week_sort_key)
+
+
+def c_learning_notes() -> int:
+    return sum(count_files(week / "note", "*.md") for week in c_learning_dirs())
 
 
 def markdown_notes() -> list[str]:
@@ -84,6 +83,7 @@ def overview_block() -> str:
     return (
         f"仓库统计（自动生成于 {date.today().isoformat()}）："
         f"C 语言练习 {c_files} 个 `.c` 文件 · 课程课件 {pdfs} 份 · "
+        f"C 语言笔记 {c_learning_notes()} 篇 · "
         f"前端练习 {htmls} 个 HTML · Markdown 笔记 {notes} 份。"
     )
 
@@ -93,15 +93,13 @@ def c_learning_block() -> str:
         return str(number) if number else "—"
 
     lines = [
-        "| 周次 | 主题 | `.c` 文件 | 课件 | 笔记 |",
-        "| --- | --- | --- | --- | --- |",
+        "| 周目录 | `.c` 文件 | 课件 | 笔记 |",
+        "| --- | --- | --- | --- |",
     ]
-    for week in sorted(WEEK_TOPICS):
-        week_dir = REPO / "C-Learning" / f"week{week}"
+    for week_dir in c_learning_dirs():
         lines.append(
-            "| 第 {week} 周 | {topic} | {c} | {pdf} | {note} |".format(
-                week=week,
-                topic=WEEK_TOPICS[week],
+            "| {name} | {c} | {pdf} | {note} |".format(
+                name=week_dir.name,
                 c=cell(count_files(week_dir, "*.c")),
                 pdf=cell(count_files(week_dir / "docs", "*.pdf")),
                 note=cell(count_files(week_dir / "note", "*.md")),
