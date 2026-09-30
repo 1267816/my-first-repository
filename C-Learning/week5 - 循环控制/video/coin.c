@@ -2,6 +2,7 @@
 int main(){
 	int x;
 	int one,two,five,sum;
+	int exit;
 	
 	scanf("%d",&x);
 	
@@ -12,8 +13,16 @@ int main(){
 				if (sum==x*10) {
 					printf("可以用%d个1角加%d个2角加%d个5角得到%d元\n",
 					one,two,five,x);
+					exit = 1;
+					break;
 				}
 			}
+			if (exit==1) {
+				break;
+			}
+		}
+		if (exit==1) {
+			break;
 		}
 	}
 	
