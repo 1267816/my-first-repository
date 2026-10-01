@@ -29,6 +29,7 @@ int main(){
 	
 	//计算加和
 	for (cnt=1;cnt<=n;cnt++) {
+		//强制类型转换
 		sum+=(x/(y*1.0));
 		z=x;
 		x+=y;

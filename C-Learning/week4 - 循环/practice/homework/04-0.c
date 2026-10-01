@@ -60,6 +60,7 @@ int main()
 				}
 			}
 		}
+		
 		if (c<n+3) {
 			c++;
 			sum=a*100+b*10+c;
