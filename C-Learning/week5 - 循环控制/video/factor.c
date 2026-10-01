@@ -8,6 +8,7 @@ int main()
 	
 	int fact = 1;
 	//int i = 1;
+	//这里int i=1可以直接写进for循环里面
 	for ( int i = 1 ; i <= n ; i = i + 1) {
 		fact = fact * i;
 	}

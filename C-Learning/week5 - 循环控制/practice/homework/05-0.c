@@ -27,6 +27,7 @@ int main(){
 	
 	scanf("%d",&n);
 	
+	//计算加和
 	for (cnt=1;cnt<=n;cnt++) {
 		sum+=(x/(y*1.0));
 		z=x;
@@ -34,6 +35,7 @@ int main(){
 		y=z;
 	}
 	
+	//按要求输出
 	printf("%.2f\n",sum);
 	
 	return 0;

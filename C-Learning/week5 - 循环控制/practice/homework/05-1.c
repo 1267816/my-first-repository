@@ -28,14 +28,22 @@
 #include <stdio.h>
 int main(){
 	int a,b,c,d,r;
+	
 	scanf("%d/%d",&a,&b);
+	
+	//保存原始分子分母
 	c=a;
 	d=b;
+	
+	//用辗转相除法求最大公约数
 	while (c%d>0) {
+		//保存原始c%d
 		r=c%d;
 		c=d;
 		d=r;
 	}
+	
+	//分子分母同时约去最大公约数
 	printf("%d/%d",a/d,b/d);
 	
 	return 0;

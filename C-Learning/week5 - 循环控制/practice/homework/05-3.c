@@ -26,6 +26,7 @@ int main(){
 	
 	scanf("%d %d",&a,&n);
 	
+	//需要保存原始变量a，不然a=a*10+a会+赋值后的a而非原始a
 	b=a;
 	for (cnt=1;cnt<=n;cnt++) {
 		sum+=a;

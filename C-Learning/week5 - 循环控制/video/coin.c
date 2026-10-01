@@ -6,6 +6,8 @@ int main(){
 	
 	scanf("%d",&x);
 	
+	//不同于百马百担问题，这里只有一个约束条件，
+	//所以必须写三个循环遍历
 	for (one=1;one<x*10;one++) {
 		for (two=1;two<x*5;two++) {
 			for (five=1;five<x*2;five++) {
@@ -25,6 +27,7 @@ int main(){
 			break;
 		}
 	}
-	
+	//用exit变量判断实现接力break
+
 	return 0;
 }

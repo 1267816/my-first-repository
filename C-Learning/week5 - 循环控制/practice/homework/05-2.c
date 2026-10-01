@@ -38,21 +38,27 @@ int main() {
 	
 	scanf("%d",&n);
 	
+	//处理负数，输出fu后把它变成正数
 	if (n<0) {
 		printf("fu ");
 		n*=(-1);
 	}
 	
+	//保存原始变量n
 	x=n;
+	//求10的（n的位数-1）次方
 	while (x>9) {
 		max*=10;
 		x/=10;
 	}
 	
+	//以max作为循环条件
 	while (max>0) {
+		//取n的最高位
 		digit=n/max;
 		n%=max;
 		max/=10;
+		//根据n的最高位分别输出
 		switch (digit) {
 			case 0:
 				printf("ling");
@@ -85,6 +91,7 @@ int main() {
 				printf("jiu");
 				break;				
 		}
+		//判断输出结果后面是空格还是换行
 		if (max>0) {
 			printf(" ");
 		} else {

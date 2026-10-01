@@ -12,7 +12,7 @@ int main(){
 			break;
 		}
 	}
-	if (isPrime==1) { //这里也能判断i是否等于x，但不好
+	if (isPrime==1) { //这里也能判断i是否等于x，但不好，原因见笔记
 		printf("是素数\n");
 	} else {
 		printf("不是素数\n");		
