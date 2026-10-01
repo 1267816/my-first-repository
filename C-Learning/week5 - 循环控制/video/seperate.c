@@ -1,19 +1,16 @@
 #include <stdio.h>
 int main(){
 	int x,y;
-	int digit=0;
 	int max=1;
 	scanf("%d",&x);
 	
 	y=x;
-	while (y>0) {
+	//可以直接把max放进第一个循环中，这样就不需要定义digit了
+	//不过要让循环少跑一般，把y>0改成y>9
+	while (y>9) {
 		y/=10;
- 		digit++;
+ 		max*=10;
 	}
-	while (digit>1) {
-		max*=10;
-		digit--;
-	}	
 	while (max>0) {
 		if (max>=10) {
 			printf("%d ",x/max);
