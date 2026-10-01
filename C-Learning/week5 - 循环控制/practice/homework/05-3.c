@@ -19,3 +19,20 @@
 2468
 
 */
+#include <stdio.h>
+int main(){
+	int a,b,n,cnt;
+	int sum=0;
+	
+	scanf("%d %d",&a,&n);
+	
+	b=a;
+	for (cnt=1;cnt<=n;cnt++) {
+		sum+=a;
+		a=a*10+b;
+	}
+	
+	printf("%d",sum);
+	
+	return 0;
+}

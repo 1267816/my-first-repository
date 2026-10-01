@@ -25,3 +25,18 @@
 1/2
 
 */
+#include <stdio.h>
+int main(){
+	int a,b,c,d,r;
+	scanf("%d/%d",&a,&b);
+	c=a;
+	d=b;
+	while (c%d>0) {
+		r=c%d;
+		c=d;
+		d=r;
+	}
+	printf("%d/%d",a/d,b/d);
+	
+	return 0;
+}

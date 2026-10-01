@@ -30,3 +30,67 @@
 fu liu ling ling
 
 */
+
+#include <stdio.h>
+int main() {
+	int n,x,digit;
+	int max=1;
+	
+	scanf("%d",&n);
+	
+	if (n<0) {
+		printf("fu ");
+		n*=(-1);
+	}
+	
+	x=n;
+	while (x>9) {
+		max*=10;
+		x/=10;
+	}
+	
+	while (max>0) {
+		digit=n/max;
+		n%=max;
+		max/=10;
+		switch (digit) {
+			case 0:
+				printf("ling");
+				break;
+			case 1:
+				printf("yi");
+				break;
+			case 2:
+				printf("er");
+				break;
+			case 3:
+				printf("san");
+				break;
+			case 4:
+				printf("si");
+				break;
+			case 5:
+				printf("wu");
+				break;
+			case 6:
+				printf("liu");
+				break;
+			case 7:
+				printf("qi");
+				break;
+			case 8:
+				printf("ba");
+				break;
+			case 9:
+				printf("jiu");
+				break;				
+		}
+		if (max>0) {
+			printf(" ");
+		} else {
+			printf("\n");
+		}
+	}
+	
+	return 0;
+}
