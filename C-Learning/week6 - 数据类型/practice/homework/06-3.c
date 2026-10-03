@@ -22,3 +22,29 @@ It's great to see you here.
 输出样例：
 4 5 2 3 3 4
 */
+#include <stdio.h>
+int main(){
+	int cnt=0;
+	int space=0;
+	char c;
+	
+	do {
+		scanf("%c",&c);
+		
+		if ((c==' '||c=='.')&&cnt>0) {
+			printf("%d",cnt);
+			cnt=0;
+			space=1;
+		} else if (c!='.'&&c!=' ') {
+			cnt++;
+		}
+		
+		if (c==' '&&space==1) {
+			printf(" ");
+		}
+		
+		space=0;
+	} while (c!='.');
+	
+	return 0;
+}

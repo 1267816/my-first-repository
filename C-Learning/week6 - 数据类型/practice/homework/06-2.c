@@ -17,3 +17,24 @@ Hello World! 123#
 输出样例：
 hELLO wORLD! 123
 */
+#include <stdio.h>
+int main(){
+	char c;
+	do {
+		scanf("%c",&c);
+		if (c!='#') {
+			if (c>='a'&&c<='z') {
+				c=c+'A'-'a';
+				printf("%c",c);
+			} else if (c>='A'&&c<='Z') {
+				c=c+'a'-'A';
+				printf("%c",c);
+			} else {
+				printf("%c",c);
+			}
+		}
+	} while (c!='#');
+	
+	
+	return 0;
+}
