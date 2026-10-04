@@ -27,3 +27,29 @@ Case #2: true
 Case #3: true
 Case #4: false
 */
+
+#include <stdio.h>
+
+int main(){
+	int cnt=0;
+	long long a=0,b=0,c=0;
+	int n=2;
+	
+	scanf("%d",&cnt);
+	scanf("\n");
+	
+	for (int i=1;i<=cnt;i++) {
+		scanf("%lld %lld %lld",&a,&b,&c);
+		if (a+b>c) {
+			printf("Case #%d: true",i);
+		} else {
+			printf("Case #%d: false",i);
+		}
+		if (i<cnt) {
+			printf("\n");
+		}
+	}
+	
+	
+	return 0;
+}
