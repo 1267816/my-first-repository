@@ -188,7 +188,7 @@ K = \left[ \frac{\sqrt{x} - 1}{2} \right]
 $$
 当x很大时，只需要循环$ {\sqrt{x}} $遍。
 
-还有没有更好的？
+**还有没有更好的？**
 
 4. 判断是否能被已知的且小于x的素数整除
 ```c
@@ -198,14 +198,19 @@ $$
 int isPrime(int x, int knownPrimes[], int numberOfKnownPrimes);
 
 int main(void) {
-    const int number = 100;          // 目标：找前100个素数
-    int prime[number] = {2};         // 素数表，默认第一个素数为2
-    int count = 1;                   // 已找到的素数个数
-    int i = 3;                       // 待测数从3开始（跳过偶数）
+    const int number = 100;          
+    // 目标：找前100个素数
+    int prime[number] = {2};         
+    // 素数表，默认第一个素数为2
+    int count = 1;                   
+    // 已找到的素数个数
+    int i = 3;                       
+    // 待测数从3开始（跳过偶数）
 
     while (count < number) {
         if (isPrime(i, prime, count)) {
-            prime[count++] = i;      // 是素数，存入表并更新计数
+            prime[count++] = i;      
+            // 是素数，存入表并更新计数
         }
         i++;
     }
@@ -238,11 +243,14 @@ int isPrime(int x, int knownPrimes[], int numberOfKnownPrimes) {
 - 令x为下一个没有被标记为非素数的数，重复上一步，直到所有的数都已经尝试完毕
 
 这种算法叫做埃拉托斯特尼筛法。
+
 因此可以写出以下的伪代码：
 - 开辟prime[n]，初始化其所有元素为1，prime[x]为1表示x是素数
 - 令x=2
 - 如果x是素数，则遍历`for(i=2;x*i<n;i++)`,令`prime[i*x]=0`
 - 令x++，如果x<n，重复上一步，否则结束
+
+再根据伪代码进行编写：
 
 ```c
 #include <stdio.h>
@@ -277,7 +285,175 @@ int main(void) {
 }
 ```
 
+### 8.2.3
 
+**二维数组**
+`int a[3][5];`通常理解为a是一个3行5列的矩阵。
+![alt text](image.png)
 
+**二维数组的遍历**
+```c
+for (i=0;i<3;i++) {
+    for (j=0;j<3;j++) {
+        a[i][j]=i*j;
+    }
+}
+```
+`a[i][j]`是一个int，表示第i行第j列上的单元。
 
+那么`a[i,j]`是什么？
+在C中逗号是运算符，因此`i,j`计算的结果是`j`，所以它等价于`a[j]`，不表示二维数组。
 
+**二维数组的初始化**
+```c
+int a[][5]={
+    {0,1,2,3,4},
+    {2,3,4,5,6},
+};
+```
+1. ==列数是必须给出的==，行数可以由编译器来数
+2. 每行一个大括号，逗号分隔
+3. 最后的逗号可以存在，古老的传统
+4. 如果省略，表示补零
+5. 在C99之后，也可以用定位
+
+**一个实例：井字棋游戏**
+![alt text](image-1.png)
+怎么实现这个程序？
+
+**读入矩阵**
+```c
+const int size=3;
+int board[size][size];
+int i,j;
+int numofX;
+int numofO;
+int result=-1;//-1:没人赢;1:X赢;0:O赢
+//读入矩阵
+for (i=0;i<size;i++) {
+    for (j=0;j<size;j++) {
+        scanf("%d",&board[i][j]);
+    }
+}
+```
+
+**检查行**
+```c
+// 检查行
+for (i = 0; i < size && result == -1; i++) {
+    numOfO = numOfX = 0; // 重置当前行的计数器
+    for (j = 0; j < size; j++) {
+        if (board[i][j] == 1) {
+            numOfX++;    // 统计 1 的个数
+        } else {
+            numOfO++;    // 统计 0 的个数
+        }
+    }
+    // 判断当前行是否全 0 或全 1
+    if (numOfO == size) {
+        result = 0;
+    } else if (numOfX == size) {
+        result = 1;
+    }
+}
+```
+
+**检查列**
+```c
+// 检查列
+if (result == -1) { // 行检查未分出胜负时，才检查列
+    for (j = 0; j < size && result == -1; j++) {
+        numOfO = num0fX = 0; // 重置当前列的计数器
+        for (i = 0; i < size; i++) {
+            if (board[i][j] == 1) { // 注意索引是 [i][j]
+                numOfX++;
+            } else {
+                numOfO++;
+            }
+        }
+        // 判断当前列是否全 0 或全 1
+        if (numOfO == size) {
+            result = 0;
+        } else if (numOfX == size) {
+            result = 1;
+        }
+    }
+}
+```
+
+**思考**
+能否用一个两重循环来合并检查行和列？
+答案是肯定的。
+```c
+for (i = 0; i < size && result == -1; i++) {
+    int rowO = 0, rowX = 0; 
+    // 当前行的 0 和 1 的计数器
+    int colO = 0, colX = 0; 
+    // 当前列的 0 和 1 的计数器
+    
+    for (j = 0; j < size; j++) {
+        // 统计第 i 行
+        if (board[i][j] == 1) rowX++;
+        else rowO++;
+        
+        // 统计第 i 列（注意索引反转）
+        if (board[j][i] == 1) colX++;
+        else col0++;
+    }
+    
+    // 检查行
+    if (rowO == size) result = 0;
+    else if (rowX == size) result = 1;
+    // 检查列（如果行已经分出胜负，就不需要再检查列了）
+    else if (colO == size) result = 0;
+    else if (colX == size) result = 1;
+}
+```
+
+原代码之所以拆成两段，是因为按行遍历时，是`board[i][j]`，按列遍历时是`board[j][i]`。
+既然两者访问的是同一个二维数组，我们完全可以利用==对称性==，在一个内层循环里同时统计当前行和当前列。
+
+**检查对角线**
+主对角线：
+```c
+// 检查主对角线（左上到右下）
+numOf0 = numOfX = 0; // 重置计数器
+for (i = 0; i < size; i++) {
+    if (board[i][i] == 1) { 
+        // 主对角线坐标特征：[i][i]
+        numOfX++;           
+        // 统计 1 的个数
+    } else {
+        numOfO++;          
+        // 统计 0 的个数
+    }
+}
+// 判断主对角线是否全 0 或全 1
+if (numOfO == size) {
+    result = 0;
+} else if (numOfX == size) {
+    result = 1;
+}
+```
+副对角线：
+```c
+// 检查副对角线（右上到左下）
+numOfO = numOfX = 0; // 重置计数器
+for (i = 0; i < size; i++) {
+    // 副对角线坐标特征：[i][size-i-1]
+    if (board[i][size - i - 1] == 1) { 
+        numOfX++;           
+        // 统计 1 的个数
+    } else {
+        numOfO++;           
+        // 统计 0 的个数
+    }
+}
+// 判断副对角线是否全 0 或全 1
+if (numOfO == size) {
+    result = 0;
+} else if (numOfX == size) {
+    result = 1;
+}
+```
+因为矩阵的行数和列数相等，循环遍历行和列的情况仍然具有对称性，所以这两个代码块的合并能共用一个循环，比刚才的要简单得多，只需要隔离计数器即可。
