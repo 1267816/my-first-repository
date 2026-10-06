@@ -36,8 +36,7 @@
 - 想拿准确数字：在 ACM 群里问老手、看牛客往届榜单（2021 轩辕杯 contest 26008、2023 新生赛 68889），
   或直接问教练有没有最低过题线
 
-来源：暨南大学信息科学技术学院官网（2021 新生赛报道、2025 CCPC 获奖新闻）、2023 年新生赛公告
-（搜狐转载）、2021 新生赛题解（CSDN）、牛客竞赛往届赛事页、2022 年 ACM 协会介绍（搜狐）。
+上面这些结论的来源链接整理在文末「十二、资料来源与链接」。
 
 ## 二、备赛目标
 
@@ -60,6 +59,7 @@
 | 第 9 周（12/1–赛前） | 只复习 | 不攻难题 | 按 5 小时整场模拟 2–3 次 |
 
 C 语言跟课进度对应翁恺入门课第 8–14 周（数组、指针、字符串、结构、文件），与学校 C 语言课同步。
+每个阶段的具体打勾清单（分最少档 / 推荐档）见 [`备赛检查表.md`](备赛检查表.md)。
 
 ## 四、算法优先级
 
@@ -148,3 +148,61 @@ C 语言跟课进度对应翁恺入门课第 8–14 周（数组、指针、字�
 不要"收藏知识点"式学习：C 语言 → 链表 → 栈 → 队列 → 树 → 图 → DP → 线段树，看起来学了很多，
 一遇到"给 n 个数……"还是不会写。宁可把 100 道简单题做到非常熟，也不要看完 10 个高级算法却
 一道题都写不出来。竞赛真正需要的是解题能力，不是知识点数量。
+
+## 十二、资料来源与链接
+
+下面这些是整理本文件时找到的、对备赛有用的链接。标「真题」的可以直接拿来做。
+链接在 2026-10-06 检查过可访问；如果哪天打不开，多半是页面搬迁，去对应网站搜标题即可。
+
+### 12.1 学校官方与公告
+
+| 内容 | 链接 |
+| --- | --- |
+| 学院官网：2021 年新生赛报道（"100 多人报名、13 题、5 小时"等细节出自这里） | <https://xxxy.jnu.edu.cn/2021/1216/c27467a670931/page.htm> |
+| 学院官网：2020 年 ACM 相关报道 | <https://xxxy.jnu.edu.cn/2020/1224/c27467a606899/page.htm> |
+| 学院官网：2023 年 ICPC 亚洲区域赛（西安站）银奖 + 铜奖 | <https://xxxy.jnu.edu.cn/2023/1025/c27467a770269/page.htm> |
+| 学院官网：2025 年 CCPC 女生专场全国金奖 + 最快解题奖 | <https://xxxy.jnu.edu.cn/2025/1029/c27467a845275/page.htm> |
+| 2023 年新生赛公告：赛制、奖项设置、报名流程（搜狐转载） | <https://www.sohu.com/a/741700415_121124005> |
+| 校赛预告（搜狐，第八届） | <https://www.sohu.com/a/399557455_120067546> |
+| 2022 年联宇杯校赛报道（干部培训网转载） | <https://www.gbpxw.com/show/196927.html> |
+| ACM 协会 / 集训队介绍（2022，含历史成绩、组队规则，搜狐） | <http://news.sohu.com/a/537435005_121124005> |
+
+### 12.2 真题与题解（优先做这些）
+
+| 内容 | 链接 |
+| --- | --- |
+| 真题：2021 新生赛（轩辕杯），牛客 13 题 | <https://ac.nowcoder.com/acm/contest/26008> |
+| 2021 新生赛题解（"最高过题数 8 道"的说法出自这里） | <https://blog.csdn.net/SC_Linno/article/details/121893544> |
+| 真题：2023 新生赛，牛客 | <https://www.nowcoder.com/acm/contest/68889> |
+| 真题：2024 校赛，牛客（12:30–17:30，5 小时） | <https://ac.nowcoder.com/acm/contest/81829> |
+| 2024 校赛题解与知识点分析（CSDN） | <https://blog.csdn.net/weixin_74850661/article/details/147341445> |
+| 真题：2024 校赛热身赛，牛客 | <https://ac.nowcoder.com/acm/contest/85698> |
+| 真题：2022 校赛，牛客 | <https://ac.nowcoder.com/acm/contest/32523> |
+| 真题：2025 新生赛热身赛，牛客 | <https://ac.nowcoder.com/acm/contest/125759> |
+| 题解作者专栏（JNU freshman，含 2024 / 2025 校赛解析） | <https://blog.csdn.net/weixin_74850661/category_13120937.html> |
+| 2024 年寒假 ACM 训练营第一天直播录播（B 站，入选后可以参考） | <https://www.bilibili.com/video/BV1hi4y1B7Mu/> |
+
+### 12.3 训练平台与赛事官网
+
+| 用途 | 链接 |
+| --- | --- |
+| 牛客竞赛（新生赛/校赛的判题平台，往届真题都在这里） | <https://ac.nowcoder.com/> |
+| 洛谷 | <https://www.luogu.com.cn/> |
+| 洛谷题单（老手推荐的《算法竞赛试炼场：洛谷 300 题精析》） | <https://www.luogu.com.cn/training/list?type=book.luogujingxi> |
+| Codeforces 比赛列表 | <https://codeforces.com/contests> |
+| CCPC 官网 | <https://ccpc.io/> |
+| ICPC 官网 | <https://icpc.global/> |
+
+### 12.4 长期学习资源
+
+| 用途 | 链接 |
+| --- | --- |
+| CS 自学指南（总入口） | <https://csdiy.wiki/> |
+| CS61B 数据结构（Berkeley） | <https://csdiy.wiki/数据结构与算法/CS61B/> |
+| MIT 6.006 算法导论 | <https://csdiy.wiki/数据结构与算法/6.006/> |
+| 6.042J 离散数学 | <https://csdiy.wiki/数学进阶/6.042J/> |
+| CSAPP 深入理解计算机系统 | <https://csdiy.wiki/计算机系统基础/CSAPP/> |
+| MIT 6.S081 操作系统 | <https://csdiy.wiki/操作系统/MIT6.S081/> |
+| 翁恺《C 语言程序设计》入门（正在跟的课，B 站） | <https://www.bilibili.com/video/BV1yentzxEqK/> |
+| 王卓 数据结构（B 站，国内教材向，寒假可用） | <https://www.bilibili.com/video/BV1nJ411V7bd> |
+| 本地刷题系统 C-Learning-Lab（本机已装，仓库地址） | <https://github.com/ocean-jun/c-learning> |
