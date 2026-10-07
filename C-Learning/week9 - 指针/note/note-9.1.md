@@ -114,3 +114,87 @@ void g(int k) {
 **传入地址**
 为什么`int i;scanf{"%d",i};`的编译没有报错？
 因为scanf不知道你传进去的6不是一个地址，而运行一定会出错的原因是scanf把它读进来的那个数字写到了不该写的地方。
+
+### 9.1.3
+
+**指针应用场景一**
+交换两个变量的值：
+```c
+#include <stdio.h>
+void swap(int *pa,int *pb);
+int main(void) {
+  int a=5;
+  int b=6;
+  swap(&a,&b);//注意要把a和b的地址传进去
+  printf("a=%d,b=%d\n",a,b);
+  return 0;
+}
+void swap(int *pa,int *pb) {
+  int t=*pa;
+  *pa=*pb;
+  *pb=t;
+}
+```
+
+**指针应用场景二**
+函数要返回多个值，某些值就只能通过指针返回。传入的参数实际上是需要保存带回的结果的变量。
+```c
+#include <stdio.h>
+void minmax(int a[],int len,int *max,int *min);
+int main(void) {
+  int a[]={1,2,3,4,5,6,7,8,9,12,13,14,16,17,21,23,55};
+  int min,max;
+  minmax(a,sizeof(a)/sizeof(a[0]),&min,&max);
+  printf("min=%d,max=%d\n",min,max);
+  return 0;
+}
+void minmax(int a[],int len,int *max,int *min)
+{
+  int i;
+  *min=*max=a[0];
+  for (i=1;i<len;i++) {
+    if (a[i]<*min) {
+      *min=a[1];
+    } 
+    if (a[i]>*max) {
+      *max=a[1];
+    }
+  }
+}
+```
+
+**指针应用场景二b**
+函数返回运算的状态，结果通过指针返回。
+常用的套路是让函数返回特殊的不属于有效范围内的值来表示出错：
+- -1或0（在文件操作会看到大量的例子）
+
+但是当任何数值都是有效的可能结果是，就得分开返回了。
+后续的语言（C++，Java）采用了异常机制来解决这个问题。
+```c
+#include <stdio.h>
+/**
+    @return 如果除法成功，返回1；否则返回0
+*/
+int divide(int a.int b,int *result);
+int main(void) {
+  int a=5;
+  int b=2;
+  int c;
+  if (divide(a,b,&c)) {
+    printf("%d/%d=%d\n",a,b,c);
+  }
+  return 0;
+}
+int divide(int a,int b,int *result) {
+  int ret=1;
+  if (b==0) {
+    ret=0;
+  } else {
+    *result=a/b;
+  }
+  return ret;
+}
+```
+
+**指针最常见的错误**
+定义了指针变量，还没有指向任何变量，就开始使用指针。因为如果指针还没被初始化，分配给指针的地址可能指向重要数据，所以有可能会崩溃。
