@@ -231,5 +231,52 @@ int isPrime(int x,int knownPrimes,int numberofKnownPrimes)
 *运算符可以对指针做，也可以对数组做。
 数组变量是const的指针，所以不能被赋值。
 
-### 9.1.5
+### 9.1.5（C99）
 
+**指针是const**
+表示一旦得到了某个变量的地址，不能再指向其他变量。
+```c
+int *const q=&i; //q是const
+*q=26; //OK
+q++; //ERROR
+```
+意思就是说：可以通过i来改变q的值，但是不能通过q改变i的值，因为如果要通过q改变i的值，就相当于让q指向了其他变量而非i。
+
+**所指是const**
+表示不能通过这个指针取修改那个变量，这并不能使得那个变量成为const。
+```c
+const int *p=&i;
+*p=26; //ERROR，因为*p是const
+i=26; //OK
+p=&j; //OK
+```
+
+**这些是啥意思**
+```c
+int i;
+const int* p1=&i;
+int const* p2=&i;
+int *const p3=&i;
+```
+判断哪个被const了的标志是const在*的前面还是后面，如果在前面，那么表示说“所指是const”，也就是通过指针不能修改，即第1和2种；如果在后面，呢么表示说“指针是const”，也就是指针不能修改，即第3种。
+
+**转换**
+总是可以把一个非const的值转换为const的。
+```c
+void f(const int *x);
+int a=15;
+f(&a); //OK
+const int b=a;
+f(&b); //OK
+b=a+1; //ERROR
+```
+当要传递的参数的类型比地址大的时候，这是常用的手段：既能用比较少的字节数传递值给参数，又能避免函数对外面的变量的修改。
+后面讲结构的时候，会再展开讲。
+
+**const数组**
+`const int a[]={1,2,3,4,5,6};`
+数组变量已经是const的指针了，这里的const表明数组的每个单元都是const int，所以必须通过初始化进行赋值。
+
+**保护数组值**
+因为把数组传入函数时传递的是地址，所以那个函数内部可以修改数组的值。为了保护数组不被破坏，可以设置参数为const：
+`int sum(const int a[],int length);`
