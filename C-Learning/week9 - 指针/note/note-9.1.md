@@ -198,3 +198,38 @@ int divide(int a,int b,int *result) {
 
 **指针最常见的错误**
 定义了指针变量，还没有指向任何变量，就开始使用指针。因为如果指针还没被初始化，分配给指针的地址可能指向重要数据，所以有可能会崩溃。
+
+### 9.1.4
+
+**传入函数的数组变成了什么？**
+```c
+int isPrime(int x,int knownPrimes,int numberofKnownPrimes) 
+{
+    int ret=1;
+    int i;
+    for (i=0;i<numberofKnownPrimes;i++) {
+      if (x%knownPrimes[i]==0) {
+        ret=0;
+        break;
+      }
+    }
+    return ret;
+}
+```
+函数参数表中的数组实际上是指针，`sizeof(a)==sizeif(int *)`，但是可以用数组的运算符[]进行运算。
+
+**数组参数**
+以下四种函数原型是等价的：
+1. `int sum(int *ar,int n);`
+2. `int sum(int *,int);`
+3. `int sum(int ar[],int n);`
+4. `int sum(int [],int);`
+
+**数组变量是特殊的指针**
+数组变量本身表达地址，所以`int a[10];int *p=a;`无需用&取地址，但是数组的单元表达的是变量，需要用&取地址。同时，有`a==&a[0]`。
+[]运算符可以对数组做，也可以对指针做。
+*运算符可以对指针做，也可以对数组做。
+数组变量是const的指针，所以不能被赋值。
+
+### 9.1.5
+
