@@ -124,6 +124,65 @@ NULL是一个预先定义的符号，表示0地址。有的编译器不愿意你
 C99可以用变量做数组定义的大小，C99之前呢？
 需要使用动态内存分配：
 `int *a=(int*)malloc(n*sizeof(int));`
-
 使用malloc()函数需要调用标准库：
 `#include <stdlib.h>`
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+	int number;
+	int *a;
+	int i;
+	printf("输入数量：");
+	scanf("%d",&number);
+	a=malloc(number*sizeof(int));
+	for (i=0;i<number;i++) {
+		scanf("%d",&a[i]);
+	}
+	for (i=number-1;i>=0;i--) {
+		printf("%d ",a[i]);
+	}
+	free(a); //需要还借了的内存
+	return 0;
+}
+```
+==一定要用free()来还malloc()所借的内存！！！==
+
+**malloc**
+```c
+#include <stdlib.h>
+void* malloc(size_t size);
+```
+向malloc申请的空间的大小是以字节为单位的，返回的结果是void*，需要类型转换为自己需要的类型。
+`(int*)malloc(n*sizeof(int))`
+
+**没空间了？**
+如果申请失败则返回0，或者叫做NULL。
+你的系统能给你多大的空间？可以使用以下代码进行测试：
+```c
+#include <stdio.h>
+#include <stdlib.h>
+int main(void) {
+	void *p;
+	int cnt=0;
+	while ((p=malloc(100*1024*1024))) {
+		cnt++;
+	}
+	printf("分配了%d00MB的空间\n",cnt);
+	//free(p); 
+	//等价于free(NULL)，合法但无意义
+	return 0;
+}
+```
+
+**free()**
+把申请得来的空间还给系统。只能还申请来的空间的首地址。
+
+**常见问题**
+1. 申请了没free-->长时间运行内存逐渐下降
+   - 新手：忘了
+   - 老手：找不到合适的free的时机
+2. free过了再free
+3. 地址变过了，直接去free
