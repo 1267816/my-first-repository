@@ -42,6 +42,30 @@
 
 int main()
 {
-
+	int n,l,r;
+	scanf("%d %d %d",&n,&l,&r);
+	
+	int a[n];
+	int i,j;
+	for (i=0;i<n;i++) {
+		scanf("%d",&a[i]);
+	}	
+	
+	int t;
+	for (i=l,j=r;i<j;i++,j--) {
+		t=a[i];
+		a[i]=a[j];
+		a[j]=t;
+	}
+	
+	for (i=0;i<n;i++) {
+		printf("%d",a[i]);
+		if (i==n-1) {
+			printf("\n");
+		} else {
+			printf(" ");
+		}
+	}
+	
 	return 0;
 }

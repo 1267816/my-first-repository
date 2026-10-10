@@ -48,8 +48,43 @@ n 最大到 100000，k 最大到 1000000000，数据量不小，建议留意程�
 
 #include <stdio.h>
 
+void reverse(int a[],int l,int r) 
+{
+	int *p=a+l;
+	int *q=a+r;
+	int t;
+	while (p<q) {
+		t=*p;
+		*p=*q;
+		*q=t;
+		p++;
+		q--;
+	}
+}
+
 int main()
 {
-
+	int n,k;
+	scanf("%d %d",&n,&k);
+	
+	int a[n];
+	int i;
+	for (i=0;i<n;i++) {
+		scanf("%d",&a[i]);
+	}
+	
+	reverse(a,0,n-1);
+	reverse(a,0,k-1);
+	reverse(a,k,n-1);
+	
+	for (i=0;i<n;i++) {
+		printf("%d",a[i]);
+		if (i==n-1) {
+			printf("\n");
+		} else {
+			printf(" ");
+		}
+	}
+	
 	return 0;
 }

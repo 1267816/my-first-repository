@@ -41,8 +41,46 @@
 
 #include <stdio.h>
 
-int main()
-{
+void f(int *max,int *min,int *people,int a[],double *average,int n);
 
+int main(void)
+{
+	int n;
+	scanf("%d",&n);
+	
+	int a[n];
+	int i;
+	for (i=0;i<n;i++) {
+		scanf("%d",&a[i]);
+	}
+	
+	int max,min,people;
+	double average;
+	f(&max,&min,&people,a,&average,n);
+	
+	printf("%d %d %d %.2f",max,min,people,average);
+	
 	return 0;
+}
+
+void f(int *max,int *min,int *people,int a[],double *average,int n)
+{
+	int i;
+	int sum=0;
+	*max=a[0];
+	*min=a[0];
+	*people=0;
+	for (i=0;i<n;i++) {
+		sum+=a[i];
+		if (a[i]>*max) {
+			*max=a[i];
+		}
+		if (a[i]<*min) {
+			*min=a[i];
+		}
+		if (a[i]>=60) {
+			(*people)++; //要先解引用再++
+		}
+	}
+	*average=1.0*sum/n;
 }
