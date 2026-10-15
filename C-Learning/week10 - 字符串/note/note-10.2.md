@@ -167,3 +167,37 @@ char *mycpy(char *dst,const char *src)
 - 同样需要保存dst的初始位置
 - 原理是赋值表达式的值是被赋值的结果。当`*src`遇到末尾的`'\0'`时，它会把`'\0'`赋给`*dst`。此时，赋值表达式的值为0，循环终止
 - 因此，这次就不能在最后写入0了，否则会越界
+
+### 10.2.5
+
+**strcat**
+
+
+
+### 10.2.6
+
+**字符串中找字符**
+```c
+char *strchr(const char *s,int c);
+char *strrchr(const char *s,int c);
+```
+功能是在字符串s里面寻找c第一次出现的位置，并返回指针。
+`strchr()`表示从左边开始读，`strrchr()`表示从右边开始读。
+返回NULL表示没有找到。
+
+经典套路：如何寻找第2个？
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main(int argc,char const *argv[])
+{
+    char s[]="hello";
+    char *p=strchr(s,'l');
+    p=strchr(p+1,'l');
+    printf("%s\n",p);
+    //输出第二个l开始的字符串
+    return 0;
+}
+```
+
