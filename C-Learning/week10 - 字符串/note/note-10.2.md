@@ -171,7 +171,22 @@ char *mycpy(char *dst,const char *src)
 ### 10.2.5
 
 **strcat**
+```c
+char *strcat(char *restrict s1,const char * restrict s2);
+```
+作用是把s2拷贝到s1后面，接成一个长的字符串，返回s1。
+s1必须要有足够的空间。
 
+**安全问题**
+strcpy和strcat都可能出现安全问题。
+如果目的地没有足够的空间呢？就会越界。
+建议使用安全版本：
+```c
+char * strncpy(char *restrict dst, const char *restrict src, size_t n);
+char * strncat(char *restrict s1, const char *restrict s2, size_t n);
+int strncmp(const char *s1, const char *s2, size_t n);
+```
+strncmp可以只比较两个字符串的前n个字符。
 
 
 ### 10.2.6
@@ -201,3 +216,21 @@ int main(int argc,char const *argv[])
 }
 ```
 
+经典套路2：如何找到这个l，然后把这个l后面的东西去复制到另外一个字符串里头？
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main(int argc,char const *argv[])
+{
+    char s[]="hello";
+    char *p=strchr(s,'l');
+    char *t=(char*)malloc(strlen(p)+1);
+    strcpy(t,p);
+    printf("%s\n",t);
+    //输出字符串t
+    free(t);
+    
+    return 0;
+}
+```
