@@ -25,3 +25,29 @@ B
 输出样例2：
 Not found
 */
+
+#include <stdio.h>
+#include <string.h>
+
+int main(int argc,char *argv[]) {
+	char s[81]="";
+	char x;
+	int ch;
+	int i=0;
+	
+	while (((ch=getchar())!='\n')&&ch!=EOF) {
+		s[i++]=(char)ch;
+	}
+	s[i]='\0';
+	
+	scanf("%c",&x);
+	
+	char *p=strchr(s,x);
+	if (p==NULL) {
+		printf("Not found\n");
+	} else {
+		printf("%s",p);
+	}
+	
+	return 0;
+}

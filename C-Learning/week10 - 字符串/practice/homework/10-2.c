@@ -17,3 +17,35 @@ cat
 输出样例：
 Tom is a male
 */
+#include <stdio.h>
+#include <string.h>
+
+int main(void) {
+	char s1[81];
+	char s2[81];
+	
+	int i=0;
+	int ch;
+	
+	while ((ch=getchar())!='\n'&&ch!=EOF) {
+		s1[i++]=(char)ch;
+	}
+	s1[i]='\0';
+	i=0;
+	while ((ch=getchar())!='\n'&&ch!=EOF) {
+		s2[i++]=(char)ch;
+	}
+	s2[i]='\0';
+	
+	char *dst=NULL;
+	while ((dst=strstr(s1,s2))!=NULL) {
+		char *src=dst+strlen(s2);
+		while (*src!='\0') {
+			*dst++=*src++;
+		}
+		*dst='\0';
+	}
+	
+	printf("%s",s1);
+	return 0;
+}

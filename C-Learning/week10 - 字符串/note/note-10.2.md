@@ -31,12 +31,12 @@ int main(int argc,char const *argv[])
 ### 10.2.2
 
 **string.h**
-- strlen
-- strcmp
-- strcpy
-- strcat
-- strchr
-- strstr
+- strlen：输出字符串长度，不含`'\0'`
+- strcmp：比较两个字符串是否相同
+- strcpy：把一个字符串拷贝到另一个字符串里面
+- strcat：把一个字符串拷贝并接到另一个字符串后面
+- strchr：字符串中找字符，输出
+- strstr：字符串中找字符串
 
 使用上述函数，需要`#include <string.h>`。
 
@@ -266,7 +266,43 @@ int main(int argc,char const *argv[])
 
 **字符串中找字符串**
 ```c
-char *strstr(const char *s1,consr char *s2);
-char *strcasestr(const char *s1,consr char *s2);
+char *strstr(const char *s1,const char *s2);
+char *strcasestr(const char *s1,const char *s2);
 ```
-上面的函数作用是在字符串中找字符串，而下面的在上面基础上忽略大小写。
+作用：
+
+strstr(s1, s2)：在字符串 s1 中查找子串 s2 第一次出现的位置，区分大小写。
+
+strcasestr(s1, s2)：作用同上，但忽略大小写。
+
+参数：
+
+s1：被查找的“大字符串”
+
+s2：要查找的“小字符串”
+
+返回值：
+
+找到：返回指向 s1 中匹配起点的指针，类型是 char *
+
+找不到：返回 NULL
+
+如果 s2 是空字符串 ""：返回 s1
+
+示例：
+
+```c
+char s[] = "Hello World";
+char *p;
+
+p = strstr(s, "World");     // p 指向 "World" 的 'W'
+p = strstr(s, "world");     // 区分大小写，找不到，p == NULL
+
+p = strcasestr(s, "world"); // 忽略大小写，p 指向 "World" 的 'W'
+```
+注意：
+
+1. 返回值是指向 s1 内部位置的指针，不是新字符串。
+例如 printf("%s\n", p); 会从匹配处一直打印到 s1 结尾。
+
+2. 函数不会修改原字符串；但返回的指针指向原串，若原串是字符串字面量，不要通过返回指针改内容。
