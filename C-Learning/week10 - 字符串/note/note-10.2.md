@@ -196,7 +196,7 @@ strncmp可以只比较两个字符串的前n个字符。
 char *strchr(const char *s,int c);
 char *strrchr(const char *s,int c);
 ```
-功能是在字符串s里面寻找c第一次出现的位置，并返回指针。
+功能是在字符串s里面寻找c第一次出现的位置，并返回指针，这个指针指向字符c第一次出现的位置。
 `strchr()`表示从左边开始读，`strrchr()`表示从右边开始读。
 返回NULL表示没有找到。
 
@@ -210,6 +210,7 @@ int main(int argc,char const *argv[])
     char s[]="hello";
     char *p=strchr(s,'l');
     p=strchr(p+1,'l');
+    //在第一个l后面再寻找一个l
     printf("%s\n",p);
     //输出第二个l开始的字符串
     return 0;
@@ -226,11 +227,46 @@ int main(int argc,char const *argv[])
     char s[]="hello";
     char *p=strchr(s,'l');
     char *t=(char*)malloc(strlen(p)+1);
+    //"llo\0"，需要3+1=4个字节的内存
     strcpy(t,p);
+    //把p拷贝到t
     printf("%s\n",t);
     //输出字符串t
     free(t);
-    
+    //释放t的内存
     return 0;
 }
 ```
+
+如果我们需要它前面的那一段呢？
+有一个小技巧：
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main(int argc,char const *argv[])
+{
+    char s[]="hello";
+    char *p=strchr(s,'l');
+
+    char c=*p;
+    //改完*p='\0'之后要用c把*p本来的值还回去
+    *p='\0';
+
+    char *t=(char*)malloc(strlen(s)+1);
+    strcpy(t,s);
+    printf("%s\n",t);
+    free(t);
+
+    *p=c;//恢复s[]
+
+    return 0;
+}
+```
+
+**字符串中找字符串**
+```c
+char *strstr(const char *s1,consr char *s2);
+char *strcasestr(const char *s1,consr char *s2);
+```
+上面的函数作用是在字符串中找字符串，而下面的在上面基础上忽略大小写。
