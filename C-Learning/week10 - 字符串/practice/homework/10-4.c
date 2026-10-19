@@ -18,3 +18,27 @@ Hello World!
 输出样例：
 llo World!He
 */
+#include <stdio.h>
+#include <string.h>
+
+int main(void) {
+	int n;
+	char s[101]="";
+	int i=0;
+	int ch;
+	while ((ch=getchar())!=EOF&&ch!='\n') {
+		s[i++]=(char)ch;
+	}
+	s[i]='\0';
+	scanf("%d",&n);
+	
+	int length=strlen(s);
+	n=n%length;
+	
+	char temp[101]="";
+	strcpy(temp,s+n);
+	s[n]='\0';
+	printf("%s",strcat(temp,s));
+	
+	return 0;
+}
