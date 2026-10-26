@@ -3,7 +3,7 @@
 计算机科学与技术专业大一学生的练习仓库，存放 C 语言课程练习、前端入门练习和 Markdown 笔记。
 
 <!-- BEGIN AUTO-STATS:overview -->
-仓库统计（自动生成于 2026-10-23）：C 语言练习 100 个 `.c` 文件 · 课程课件 20 份 · C 语言笔记 22 篇 · 前端练习 19 个 HTML · Markdown 笔记 2 份。
+仓库统计（自动生成于 2026-10-26）：C 语言练习 100 个 `.c` 文件 · 课程课件 20 份 · C 语言笔记 22 篇 · 前端练习 19 个 HTML · Markdown 笔记 2 份。
 <!-- END AUTO-STATS:overview -->
 
 ## 目录
@@ -13,6 +13,7 @@
 | `C-Learning/` | 翁恺《C 语言程序设计》入门课的课件、跟课代码、练习与笔记，按课程周次组织 |
 | `front-end-practice/` | 暑假跟视频做的前端练习（HTML / CSS / JavaScript） |
 | `Markdown-learning/` | Markdown 语法笔记与练习 |
+| `Lyra-learning/` | UE5 Lyra 源码阅读与实操笔记：环境搭建、第1～3章的实验记录 |
 | `ACM-ICPC/` | ACM / ICPC 竞赛的选拔信息与备赛计划 |
 | `ai-workspace/` | AI 协作用的工作目录，以及维护本仓库文档的脚本 |
 
@@ -72,6 +73,21 @@
 `Markdown入门.md` 是语法笔记兼练习，`photo_format.md` 记录图片语法。详细说明见
 [`Markdown-learning/README.md`](Markdown-learning/README.md)。
 
+## Lyra-learning
+
+一边读 UE5 Lyra 的教程（教程放在本地 `D:\gamedev-club`，不在本仓库），一边动手做实验，
+把结论和验证过程记在这里。目前四篇：
+
+| 文件 | 内容 |
+| --- | --- |
+| `00.md` | 开发环境搭建：MinGW-w64、Visual Studio 2026、UE 缓存与虚拟内存、生成并编译 LyraStarterGame（429 个编译任务）、第 0 章两个实验的验证结果 |
+| `01.md` | 第 1 章 对象世界与反射：宏、蓝图与资产的对应关系 |
+| `02.md` | 第 2 章 GameMode 的存在端验证（纯蓝图） |
+| `03.md` | 第 3 章 网络入门：服务器权威、属性复制、NetMode |
+
+笔记只写结论与验证过程，不复制教程正文。引擎与工程都不在仓库里：引擎在 `D:\UE_5.8`，
+Lyra 工程在 `D:\LyraStarterGame`，派生数据缓存重定向到 `D:\UnrealEngineCache`。
+
 ## 竞赛与学习路线
 
 竞赛相关的内容集中在 [`ACM-ICPC/`](ACM-ICPC/README.md)：选拔流程与难度估算、九周备赛计划、
@@ -87,6 +103,8 @@
 
 - C 语言：Dev-C++ 6.3（TDM-GCC 9.2）；源码以 UTF-8 保存，编译时加 `-fexec-charset=GBK`，
   以便 Windows 控制台正确显示中文
+- C++ 与 UE：MinGW-w64（GCC 16.2，`C:\mingw64`）写日常 C/C++；Visual Studio 2026 用来编译 UE；
+  引擎装在 `D:\UE_5.8`，Lyra 工程在 `D:\LyraStarterGame`
 - 编辑器：VS Code（仓库自带 `my-first-repository.code-workspace`）；版本管理：Git + GitHub Desktop
 - `.gitignore` 排除 `.exe`、`.o`、`.obj`、`.out` 等编译产物；课程课件与笔记的 PDF 保留在仓库里
 - 空目录中的 `.gitkeep` 是占位文件，用来让 git 保留该目录
