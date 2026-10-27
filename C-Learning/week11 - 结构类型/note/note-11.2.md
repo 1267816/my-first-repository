@@ -350,3 +350,163 @@ void output(struct point p)
     printf("%d, %d\n", p.x, p.y);
 }
 ```
+
+### 11.2.3 结构中的结构
+
+**结构数组**
+
+```c
+struct date dates[100];
+struct date dates[]= {
+    {4,5,2005},{2,4,2005}
+};
+```
+
+一个计算下一秒的程序如下：
+
+```c
+#include <stdio.h>
+
+// 1. 定义时间结构体
+struct time {
+    int hour;
+    int minutes;
+    int seconds;
+};
+
+// 2. 函数声明：接收并返回结构体
+struct time timeUpdate(struct time now);
+
+int main(void) {
+    // 3. 定义并初始化结构数组：包含 5 个时间点
+    struct time testTimes[5] = {
+        {11, 59, 59},  // 11:59:59 下一秒跨分钟
+        {12, 0, 0},
+        {1, 29, 59},
+        {23, 59, 59},  // 23:59:59 下一秒跨天
+        {19, 12, 27}
+    };
+    int i;
+
+    for (i = 0; i < 5; ++i) {
+        // 4. 打印当前时间
+        printf("Time is %.2i:%.2i:%.2i", 
+               testTimes[i].hour, testTimes[i].minutes, testTimes[i].seconds);
+
+        // 5. 将当前时间传入函数加 1 秒，并接收返回的新时间
+        testTimes[i] = timeUpdate(testTimes[i]);
+
+        // 6. 打印增加 1 秒后的时间
+        printf("...one second later it's %.2i:%.2i:%.2i\n", 
+               testTimes[i].hour, testTimes[i].minutes, testTimes[i].seconds);
+    }
+
+    return 0;
+}
+
+// 7. 时间加 1 秒的核心逻辑
+struct time timeUpdate(struct time now) {
+    ++now.seconds;
+    if (now.seconds == 60) {
+        now.seconds = 0;
+        ++now.minutes;
+        if (now.minutes == 60) {
+            now.minutes = 0;
+            ++now.hour;
+            if (now.hour == 24) {
+                now.hour = 0;
+            }
+        }
+    }
+    return now;
+}
+```
+
+**结构中的结构**
+
+```c
+struct dateAndTime {
+    struct date sdate;
+    struct time stime;
+};
+```
+
+如上所示，结构里面的成员也可以是另一个结构。
+
+**嵌套的结构**
+
+```c
+
+struct point {
+    int x;
+    int y;
+};
+
+struct rectangle {
+    struct point pt1;
+    struct point pt2;
+};
+
+// 如果有变量
+struct rectangle r;
+// 就可以有：
+// r.pt1.x、r.pt1.y,
+// r.pt2.x 和 r.pt2.y
+
+
+// 如果有变量定义：
+struct rectangle r, *rp;
+rp = &r;
+
+// 那么下面的四种形式是等价的：
+r.pt1.x
+rp->pt1.x
+(r.pt1).x
+(rp->pt1).x
+```
+
+但是没有rp->pt1->x，因为pt1不是指针。
+
+**结构中的结构数组**
+
+```c
+#include <stdio.h>
+
+// 1. 基础结构：点
+struct point {
+    int x;
+    int y;
+};
+
+// 2. 嵌套结构：矩形（由两个点组成）
+struct rectangle {
+    struct point p1;  // 左上角
+    struct point p2;  // 右下角
+};
+
+// 打印函数：逐层访问成员
+void printRect(struct rectangle r)
+{
+    printf("<%d, %d> to <%d, %d>\n", r.p1.x, r.p1.y, r.p2.x, r.p2.y);
+}
+
+int main(int argc, char const *argv[])
+{
+    int i;
+    
+    // 3. 结构中的结构的数组
+    // 外层[]：包含2个矩形的数组
+    // 中层{}：1个矩形（包含2个点）
+    // 内层{}：1个点的 x 和 y
+    struct rectangle rects[] = {
+        {{1, 2}, {3, 4}}, // 第1个矩形
+        {{5, 6}, {7, 8}}  // 第2个矩形
+    };
+
+    for(i = 0; i < 2; i++) {
+        printRect(rects[i]);
+    }
+    
+    return 0; 
+}
+```
