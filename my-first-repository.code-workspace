@@ -3,5 +3,9 @@
 		{
 			"path": "."
 		}
-	]
+	],
+	"settings": {
+		"markdownlint.focusMode": false,
+		"eslint.useFlatConfig": false
+	}
 }
