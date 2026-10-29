@@ -60,3 +60,61 @@ int main(int argc,char const *argv[])
 - `__DATE__` ->编译时的日期
 - `__TIME__` ->编译时的时间
 - `__STDC__` ->声明是标准C
+
+### 12.2.2
+
+**像函数的宏**
+
+`#define cube(x) ((x)*(x)*x))`
+宏可以带参数。
+
+**错误定义的宏**
+
+`#define RADTODEG(x) (x*57.29578)`
+`#define RADTODEG(x) (x)*57.28578`
+
+采用如下的测试程序：
+
+```c
+#include <stdio.h>
+
+#define RADTODEG1(x) (x*57.29578)
+#define RADTODEG2(x) (x)*57.29578
+
+int main(int argc,char const *argv[])
+{
+    printf("%f\n",RADTODEG1(5+2));
+    printf("%f\n",180/RADTODEG2(1));
+    return 0;
+}
+```
+
+两个输出结果都是错误的。为什么？
+因为文本替换没有考虑运算优先级问题，也就是少了括号。
+
+**带参数的宏的原则**
+
+- 一切都要括号
+  - 整个值要括号
+  - 参数出现的每个地方都要括号
+
+应该写成：`#define RADTODEG(x) ((x)*57.29578)`
+
+**带参数的宏**
+
+可以带多个参数，如：
+
+```c
+#define MIN(a,b) ((a)>(b)?(b):(a))
+```
+
+也可以组合（嵌套）使用其他宏。
+
+它在大型程序的代码中使用非常普遍，可以非常复杂，如在`#`和`##`这两个运算符的帮助下“产生”函数。
+它存在中西方文化差异。部分宏会被inline函数替代。
+
+**其他编译预处理指令**
+
+- 条件编译
+- error
+- ...
