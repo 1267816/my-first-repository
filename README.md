@@ -13,11 +13,16 @@
 | `C-Learning/` | 翁恺《C 语言程序设计》入门课的课件、跟课代码、练习与笔记，按课程周次组织 |
 | `front-end-practice/` | 暑假跟视频做的前端练习（HTML / CSS / JavaScript） |
 | `Markdown-learning/` | Markdown 语法笔记与练习 |
-| `Lyra-learning/` | UE5 Lyra 源码阅读与实操笔记：环境搭建、第1～3章的实验记录 |
+| `Lyra-learning/` | UE5 Lyra 源码阅读与实操笔记：环境搭建、第1～7章的实验记录 |
 | `ACM-ICPC/` | ACM / ICPC 竞赛的选拔信息与备赛计划 |
 | `ai-workspace/` | AI 协作用的工作目录，以及维护本仓库文档的脚本 |
+| `cpp-learning/` | 计划中的 C++ 学习目录，还没开工 |
+| `UnrealEngine-learning/` | 计划中的虚幻引擎学习目录，还没开工 |
 
 下面按目录列出概况，各目录的详细说明见该目录下的 `README.md`。
+
+`cpp-learning/` 与 `UnrealEngine-learning/` 只是先留好的位置，还没排期、里面没有文件；
+空目录 git 不跟踪，所以要等放进第一批代码或笔记时才会出现在提交里。
 
 ## C-Learning
 
@@ -42,7 +47,10 @@
 | project-test | 2 | — | — |
 <!-- END AUTO-STATS:c-learning -->
 
-每周的目录结构一致，含义固定：
+`week10 - ACLLib的基本图形函数` 与 `week10 - 字符串` 并存是正常的：图形库那一节还没跟到，
+目录里只有占位文件；等学的时候再把代码与笔记补进去。
+
+前 11 周的目录结构一致，含义固定（week12–14 只建了 `docs/`、`video/`、`module/`、`note/`，没有 `practice/`）：
 
 - `weekN/docs/`：课程课件
 - `weekN/video/`：跟着视频敲的程序
@@ -53,6 +61,14 @@
 
 练习文件名对应题目编号，例如 `04-2.c` 是第 4 周第 2 题。
 编译方式与命名约定见 [`C-Learning/README.md`](C-Learning/README.md)。
+
+### project-test
+
+多文件工程的固定位置，目前有 `max/`（Dev-C++ 工程：`main.c` + `max.c`，另有 `Makefile.win` 与工程文件）。
+
+单独拿出来放是因为路径：Dev-C++ 编译多文件工程时要求工程路径为纯英文，同样这个工程放在
+`week12 - 程序结构/video/` 下编不过，搬到 `C-Learning/project-test/max/` 就正常。
+以后新建多文件工程一律放这个目录，跟课的单文件程序仍放各周 `video/`。
 
 ## front-end-practice
 
@@ -77,7 +93,7 @@
 ## Lyra-learning
 
 一边读 UE5 Lyra 的教程（教程放在本地 `D:\gamedev-club`，不在本仓库），一边动手做实验，
-把结论和验证过程记在这里。目前五篇：
+把结论和验证过程记在这里。目前七篇（第 5 章没有实验，所以没有 `05.md`）：
 
 | 文件 | 内容 |
 | --- | --- |
@@ -86,6 +102,8 @@
 | `02.md` | 第 2 章 GameMode 的存在端验证（纯蓝图） |
 | `03.md` | 第 3 章 网络入门：服务器权威、属性复制、NetMode |
 | `04.md` | 第 4 章 数据与资产：第一个实操是看引用链（Reference Viewer） |
+| `06.md` | 第 6 章 Experience 与 GameFeature：核显降级设置、用 Override 换剧本（同一张地图换玩法） |
+| `07.md` | 第 7 章 7-1：Add Components 往所有 LyraCharacter 注入组件，服务器与两个客户端实测 |
 
 笔记只写结论与验证过程，不复制教程正文。引擎与工程都不在仓库里：引擎在 `D:\UE_5.8`，
 Lyra 工程在 `D:\LyraStarterGame`，派生数据缓存重定向到 `D:\UnrealEngineCache`。
@@ -109,6 +127,7 @@ Lyra 工程在 `D:\LyraStarterGame`，派生数据缓存重定向到 `D:\UnrealE
   引擎装在 `D:\UE_5.8`，Lyra 工程在 `D:\LyraStarterGame`
 - 编辑器：VS Code（仓库自带 `my-first-repository.code-workspace`）；版本管理：Git + GitHub Desktop
 - `.gitignore` 排除 `.exe`、`.o`、`.obj`、`.out` 等编译产物；课程课件与笔记的 PDF 保留在仓库里
+- 多文件工程统一放 `C-Learning/project-test/`（Dev-C++ 要求工程路径为纯英文），原因见上面 C-Learning 一节
 - 空目录中的 `.gitkeep` 是占位文件，用来让 git 保留该目录
 
 ## 说明
