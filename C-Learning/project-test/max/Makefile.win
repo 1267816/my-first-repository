@@ -1,0 +1,31 @@
+# Project: max
+# Makefile created by Embarcadero Dev-C++ 6.3
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = main.o max.o
+LINKOBJ  = main.o max.o
+LIBS     = -L"C:/Users/25878/Dev-Cpp/TDM-GCC-64/lib" -L"C:/Users/25878/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/lib" -static-libgcc -g3
+INCS     = -I"C:/Users/25878/Dev-Cpp/TDM-GCC-64/include" -I"C:/Users/25878/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Users/25878/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include"
+CXXINCS  = -I"C:/Users/25878/Dev-Cpp/TDM-GCC-64/include" -I"C:/Users/25878/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Users/25878/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"C:/Users/25878/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++"
+BIN      = max.exe
+CXXFLAGS = $(CXXINCS) -g3 -fexec-charset=GBK
+CFLAGS   = $(INCS) -g3 -fexec-charset=GBK
+DEL      = C:\Users\25878\Dev-Cpp\devcpp.exe INTERNAL_DEL
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${DEL} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+max.o: max.c
+	$(CC) -c max.c -o max.o $(CFLAGS)
