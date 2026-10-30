@@ -18,7 +18,7 @@
 | week10 - 字符串 | 7 | 2 | 2 |
 | week11 - 结构类型 | 2 | 3 | 3 |
 | week12 - 程序结构 | 3 | 3 | 3 |
-| week13 - 文件 | — | — | — |
+| week13 - 文件 | — | — | 1 |
 | week14 - 链表 | — | — | — |
 | project-test | 2 | — | — |
 <!-- END AUTO-STATS:c-learning -->
