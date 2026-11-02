@@ -190,6 +190,20 @@ Unix喜欢用文本文件来做数据存储和程序配置；而windows喜欢用
 媒体：只能是二进制的
 现实的工程：程序通过第三方库来读写文件，很少直接读写二进制文件了。
 
+**sprintf**
+
+向一个字符串输出，用法和`printf`一样，只是第一个参数换成了字符数组。
+
+```c
+char format[10];
+sprintf(format, "%%%ds", 19);   // 做出来是 "%19s"
+// "%%" 输出一个百分号，%d 把19填进去，最后补个字母 s
+scanf(format, name);            // 等价于 scanf("%19s", name)
+```
+
+19是`STRLEN-1`，留一个位置给字符串结束符，这样读名字时不会写出数组边界。
+这就是这集里"动态拼一个格式串"的小技巧。
+
 **二进制读写**
 
 ```c
@@ -197,11 +211,24 @@ size_t fread(void *restrict ptr, size_t size, size_t nitems, FILE *restrict stre
 size_t fwrite(const void *restrict ptr, size_t size, size_t nitems, FILE *restrict stream);
 ```
 
-注意：FILE指针是最后一个参数，返回的是成功读写的字节数。
+注意：FILE指针是最后一个参数，**返回的是成功读写的元素个数**，也就是成功读写了几个`nitems`那么大的单位，不是字节数。
+
+写一个结构体数组时这样用：
+
+```c
+// a_stu是结构体数组，number是学生个数，fp是已经打开的文件
+if (fwrite(a_stu, sizeof(struct student), number, fp) != number) {
+    // 返回值和 number 比，不相等就说明没写完，按失败处理
+}
+```
+
+两个学生（每个`sizeof(struct student)`是28字节）写出来是56字节，返回值是2，不是56。
 
 **为什么有nitem？**
 
 因为二进制文件的读写一般都是通过对一个结构变量的操作来进行的，于是nitem就是用来说明这次读写几个结构变量。
+
+比如上面写学生数组，nitem就是学生个数；读第n个学生时，nitem一般是一次读1个。
 
 **可移植性**
 
