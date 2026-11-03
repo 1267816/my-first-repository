@@ -19,7 +19,7 @@
 | week11 - 结构类型 | 2 | 3 | 3 |
 | week12 - 程序结构 | 3 | 3 | 3 |
 | week13 - 文件 | — | — | 2 |
-| week14 - 链表 | — | — | 1 |
+| week14 - 链表 | — | — | 2 |
 | project-test | 2 | — | — |
 <!-- END AUTO-STATS:c-learning -->
 

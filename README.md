@@ -3,7 +3,7 @@
 计算机科学与技术专业大一学生的练习仓库，存放 C 语言课程练习、前端入门练习和 Markdown 笔记。
 
 <!-- BEGIN AUTO-STATS:overview -->
-仓库统计（自动生成于 2026-11-02）：C 语言练习 107 个 `.c` 文件 · 课程课件 28 份 · C 语言笔记 31 篇 · 前端练习 19 个 HTML · Markdown 笔记 2 份。
+仓库统计（自动生成于 2026-11-03）：C 语言练习 107 个 `.c` 文件 · 课程课件 28 份 · C 语言笔记 32 篇 · 前端练习 19 个 HTML · Markdown 笔记 2 份。
 <!-- END AUTO-STATS:overview -->
 
 ## 目录
@@ -43,7 +43,7 @@
 | week11 - 结构类型 | 2 | 3 | 3 |
 | week12 - 程序结构 | 3 | 3 | 3 |
 | week13 - 文件 | — | — | 2 |
-| week14 - 链表 | — | — | 1 |
+| week14 - 链表 | — | — | 2 |
 | project-test | 2 | — | — |
 <!-- END AUTO-STATS:c-learning -->
 
