@@ -14,11 +14,10 @@
 | week7 - 函数 | 7 | 2 | 2 |
 | week8 - 数组 | 6 | 2 | 2 |
 | week9 - 指针 | 14 | 2 | 3 |
-| week10 - ACLLib的基本图形函数 | — | — | — |
 | week10 - 字符串 | 7 | 2 | 2 |
 | week11 - 结构类型 | 2 | 3 | 3 |
 | week12 - 程序结构 | 3 | 3 | 3 |
-| week13 - 文件 | — | — | 2 |
+| week13 - 文件 | — | 2 | 2 |
 | week14 - 链表 | — | — | 2 |
 | project-test | 2 | — | — |
 <!-- END AUTO-STATS:c-learning -->
