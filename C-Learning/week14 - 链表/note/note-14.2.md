@@ -162,8 +162,108 @@ void add(List *pList,int number) {
 }
 ```
 
-解释注释了1和2的两行代码：
+解释带有注释1和2的两行代码：
 
 `pList->tail`拿出来的是当前的尾指针，指向的是目前的链表尾，`->next`就拿出了链表尾的next成员，把p赋给它，这样，链表尾next指针就指向了新节点p；
 
 之后，p已经接到链表尾了，因此我们需要更新tail，让下一个节点能够接到新的链表尾p上，而非旧的。所以需要`pList->tail=p;`，改变tail的指向。
+
+### 14.2.4
+
+**链表的搜索**
+
+我们需要遍历整个list，并进行搜索。
+实现如下：
+
+```c
+Node *p;
+int isFound=0;
+for (p=list.head;p;p=p->next) {
+    if (p->value==number) {
+        printf("找到了\n");
+        isFound=1;
+        break;
+    }
+}
+if (!isFound) {
+    printf("没找到\n");
+}
+```
+
+### 14.2.5
+
+**链表的删除**
+
+我们想要在链表中找到值为i的节点，并把它删掉。
+我们知道单链表是单向的，如果节点p需要删掉，那么，必须知道它的前一个节点q，才能把链表重新连起来。
+
+考虑如下的代码：
+
+```c
+Node *q;
+for (q=NULL,p=list.head;p;q=p,p=p->next) {
+    if (p->value==number) {
+        q->next=p->next;
+        // 让q跨过p，指向p的下一个节点
+        free(p);
+        // 记得释放内存
+        break;
+    }
+}
+```
+
+q跟在p后面，记住前一个节点。每次循环末尾，q先走到p的位置，然后p在向前走一步。
+
+但是，这段代码有严重的bug：
+如果我们要删的节点恰好是头节点，怎么办？
+程序会崩溃，因为q是NULL，NULL->next会段错误！
+
+一种机械的检查这种边界情况的方法是：
+==`->`左边的指针必须要检查是不是NULL，它必须不能是NULL。==
+
+改进的方法：
+
+```c
+Node *q;
+for (q=NULL,p=list.head;p;q=p,p=p->next) {
+    if (p->value==number) {
+        if (q) {
+            q->next=p->next;
+            // 如果q不是NULL
+            // 让q跨过p，指向p的下一个节点 
+        } else {
+            list.head=p->next;
+            // 如果q是NULL
+            // 让下一个节点直接成为头节点
+        }
+        free(p);
+        // 记得释放内存
+        break;
+    }
+}
+```
+
+### 14.2.6
+
+**链表的清除**
+
+在做完所有事情后，我们需要把整个链表占用的内存全部都释放掉。
+
+```c
+for (p=list.head;p;p=q) {
+    q=p->next;
+    free(p);
+}
+```
+
+`q=p->next;`的意思是，先把p指向的结构体list中指向下一个节点的指针next存到q里，然后就可以`free(p);`了。在这之后，由于for内的`p=q`，p又会指向下一个节点。以此类推，就可以把整个链表占用的内存就全部被释放掉了。
+
+在释放完之后，list.head依然保存着原来第一个节点的地址，由于指向的内存全部被free了，所以，list.head会变成一个野指针。
+
+因此，在实际写完整的clear函数时，循环结束后通常还需要加上：
+
+```c
+list.head=NULL;
+```
+
+防止误用list.head。
