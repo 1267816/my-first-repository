@@ -24,7 +24,7 @@ typedef struct _node {
     struct _node *next;
 } Node;
 
-#endif;
+#endif
 ```
 
 之前的读入若干个数据，直到读入-1才停下的程序，可以用变长数组，也可以用链表。
