@@ -9,8 +9,6 @@
 //       3 1 3 2 3 1
 //     输出：
 //       3 3
-//
-// 待填：计数函数 + 最小可跑样例。现在只有题面与说明，没有任何代码。
 
 #include <stdio.h>
 
@@ -18,16 +16,22 @@ int main(void) {
 	int n;
 	scanf("%d",&n);
 	int cnt[100]={0};
+	int i;
+	int max=0;
 	
-	for (int i=0;i<n;i++) {
+	for (i=0;i<n;i++) {
 		int a;
 		scanf("%d",&a);
 		cnt[a-1]++;
 	}
 	
-	for (i=0,int max=0;i<100;i++) {
-		if 
+	for (i=0;i<100;i++) {
+		if (cnt[i]>cnt[max]) {
+			max=i;
+		}
 	}
+	
+	printf("%d %d",max+1,cnt[max]);
 	
 	return 0;
 }
