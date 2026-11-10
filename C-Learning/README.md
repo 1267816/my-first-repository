@@ -23,6 +23,12 @@
 | project-test | 3 | — | — |
 <!-- END AUTO-STATS:c-learning -->
 
+## 可复用模块放哪
+
+各周 `module/` 里该放什么（按最低知识范围归位）、模板文件该长什么样，见
+[`module-该放什么.md`](module-该放什么.md)；算法清单与备赛批次在
+[`ACM-ICPC/templates/README.md`](../ACM-ICPC/templates/README.md)。两边结论一致，改动要互相同步。
+
 ## 目录结构
 
 ```text
